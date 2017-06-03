@@ -47,18 +47,7 @@ public class main1 {
         String cmd2 = "rm indexo.html";
         executeCommand(cmd2);
         System.out.println(out);
-
-
-
-
-
-
-
-
-
-       /* String cmd = "wkhtmltopdf www.google.com achrafito";
-        String out = executeCommand(cmd);
-        System.out.println(out);*/
+        
 
 
     }
