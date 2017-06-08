@@ -33,13 +33,13 @@ public class main1 {
                 .with("filiere", Calendar.getInstance().getTime());
         String output = template.render(model);
 
-        toPDF(output);
+        toPDF(output,eval);
 
 
     }
 
-    private static String toPDF(String output/*,Evaluation eval */){
-        String pathHtml = "./HTML/fiche_eval_HTML.html";
+    private static String toPDF(String output,Evaluation eval ){
+        String pathHtml = "./HTML/fiche_eval_HTML\"+eval.getStage().getEtudiant().getIdentEtudiant()+\"_\"+eval.getStage().getEtudiant().getNomUsuel()+\".html";
         try{
             //String pathHtml = "./HTML/fiche_evaluation_HTML"+eval.getStage().getEtudiant().getIdentEtudiant()+"_"+eval.getStage().getEtudiant().getNomUsuel()+".html";
 
@@ -51,7 +51,7 @@ public class main1 {
         }
 
 
-        String path = "./PDF/fiche_evaluation_.pdf";
+        String path = "./PDF/fiche_evaluation_"+eval.getStage().getEtudiant().getIdentEtudiant()+"_"+eval.getStage().getEtudiant().getNomUsuel()+".pdf";
         String cmd = "wkhtmltopdf --enable-javascript --debug-javascript "+pathHtml+" "+path;
         String out = executeCommand(cmd);
         String cmd2 = "rm index1.html";
